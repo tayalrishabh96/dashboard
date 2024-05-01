@@ -356,7 +356,7 @@ class GitOpsConfiguration extends Component<GitOpsProps, GitOpsState> {
     getPayload = () => {
         const payload = {
             id: this.state.form.id,
-            provider: this.state.isBitbucketCloud ? 'BITBUCKET_DC' : this.state.form.provider,
+            provider: !this.state.isBitbucketCloud ? 'BITBUCKET_DC' : this.state.form.provider,
             username: this.state.form.username.replace(/\s/g, ''),
             host: this.state.form.host.replace(/\s/g, ''),
             token: parsePassword(this.state.form.token.replace(/\s/g, '')),
