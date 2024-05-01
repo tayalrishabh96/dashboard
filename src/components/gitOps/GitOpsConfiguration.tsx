@@ -292,7 +292,7 @@ class GitOpsConfiguration extends Component<GitOpsProps, GitOpsState> {
             gitLabGroupId: this.requiredFieldCheck(form.gitLabGroupId),
             azureProjectName: this.requiredFieldCheck(form.azureProjectName),
             bitBucketWorkspaceId: this.state.isBitbucketCloud ? this.requiredFieldCheck(form.bitBucketWorkspaceId) : '',
-            bitBucketProjectKey: '',
+            bitBucketProjectKey: this.requiredFieldCheck(form.bitBucketProjectKey),
         }
     }
 
@@ -313,7 +313,7 @@ class GitOpsConfiguration extends Component<GitOpsProps, GitOpsState> {
             } else if (this.state.providerTab === GitProvider.GITLAB) {
                 _isInvalid = isError.gitLabGroupId.length > 0
             } else if (this.state.providerTab === GitProvider.BITBUCKET_CLOUD) {
-                _isInvalid = isError.bitBucketWorkspaceId.length > 0
+                _isInvalid = isError.bitBucketWorkspaceId.length > 0 || isError.bitBucketProjectKey.length > 0
             } else {
                 _isInvalid = isError.azureProjectName.length > 0
             }
