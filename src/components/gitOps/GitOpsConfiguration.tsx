@@ -199,12 +199,9 @@ class GitOpsConfiguration extends Component<GitOpsProps, GitOpsState> {
                     host: GitHost[this.state.providerTab],
                     provider: GitProvider.GITHUB,
                 }
-                const isBitbucketCloud = response.result?.reduce((acc, item) => {
-                    if (item.provider !== 'BITBUCKET_CLOUD' && item.provider !== 'BITBUCKET_DC') {
-                        return acc
-                    }
-                    return item.provider === 'BITBUCKET_CLOUD'
-                }, true)
+                const bitbucketCloudConfig = response.result?.find((item) => item.provider === 'BITBUCKET_CLOUD')
+                const bitbucketDCConfig = response.result?.find((item) => item.provider === 'BITBUCKET_DC')
+                const isBitbucketCloud = (!bitbucketCloudConfig && !bitbucketDCConfig) || (!bitbucketDCConfig?.active && bitbucketCloudConfig)
                 this.setState({
                     gitList: response.result || [],
                     saveLoading: false,
