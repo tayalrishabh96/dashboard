@@ -367,10 +367,8 @@ class GitOpsConfiguration extends Component<GitOpsProps, GitOpsState> {
             provider: this.state.form.provider,
             username: this.state.form.provider === "BITBUCKET_DC" ? 'admin' : this.state.form.username.replace(/\s/g, ''),
             host: this.state.form.host.replace(/\s/g, ''),
-            token: parsePassword(
-                this.state.form.provider === 'BITBUCKET_DC'
-                ? safeTrim(this.state.form.token)
-                : this.state.form.token.replace(/\s/g, '')
+            token:  this.state.form.provider === 'BITBUCKET_DC' ? this.state.form.token : parsePassword(
+                this.state.form.token.replace(/\s/g, '')
             ),
             gitLabGroupId: this.state.form.gitLabGroupId.replace(/\s/g, ''),
             gitHubOrgId: this.state.form.gitHubOrgId.replace(/\s/g, ''),

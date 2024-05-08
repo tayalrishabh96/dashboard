@@ -345,7 +345,7 @@ export const GitOpsDrawer = ({
         if (selectedRepoType === repoType.CONFIGURE && repoURL.length === 0) {
             return
         }
-        if (selectedRepoType === repoType.DEFAULT || staleData) {
+        if ((selectedRepoType === repoType.DEFAULT || staleData) && false) {
             dispatch({
                 type: ChartValuesViewActionTypes.setGitRepoURL,
                 payload: AUTO_GENERATE_GITOPS_REPO,
@@ -404,6 +404,7 @@ export const GitOpsDrawer = ({
                                     repoURL={repoURL}
                                     selectedRepoType={selectedRepoType}
                                     staleData={staleData}
+                                    provider='BITBUCKET_DC'
                                 />
                             </div>
                         </div>
