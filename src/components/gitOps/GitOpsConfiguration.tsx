@@ -201,7 +201,8 @@ class GitOpsConfiguration extends Component<GitOpsProps, GitOpsState> {
                 }
                 const bitbucketCloudConfig = response.result?.find((item) => item.provider === 'BITBUCKET_CLOUD')
                 const bitbucketDCConfig = response.result?.find((item) => item.provider === 'BITBUCKET_DC')
-                const isBitbucketCloud = !bitbucketDCConfig?.active && bitbucketCloudConfig
+                /* NOTE: if neither of the configs arrive default to cloud. If DC is set & no cloud, show DC. If both exists use active state */
+                const isBitbucketCloud = (!bitbucketDCConfig && !bitbucketCloudConfig) || (!bitbucketDCConfig?.active && !!bitbucketCloudConfig)
                 this.setState({
                     gitList: response.result || [],
                     saveLoading: false,
