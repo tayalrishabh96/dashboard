@@ -16,6 +16,7 @@ const UserGitRepConfiguration: FunctionComponent<UserGitRepoConfigurationProps> 
     const [gitOpsRepoURL, setGitOpsRepoURL] = useState('')
     const [selectedRepoType, setSelectedRepoType] = useState(repoType.DEFAULT)
     const [isEditable, setIsEditable] = useState(false)
+    const [gitOpsProvider, setGitOpsProvider] = useState('')
     const [showReloadModal, setShowReloadModal] = useState(false)
     const [loading, setLoading] = useState(false)
 
@@ -26,6 +27,7 @@ const UserGitRepConfiguration: FunctionComponent<UserGitRepoConfigurationProps> 
                 if (response.result) {
                     setGitOpsRepoURL(response.result.gitRepoURL)
                     setIsEditable(response.result.isEditable)
+                    setGitOpsProvider(response.result.provider || '')
                 }
             })
             .catch((err) => {
@@ -85,7 +87,7 @@ const UserGitRepConfiguration: FunctionComponent<UserGitRepoConfigurationProps> 
     function handleSaveButton() {
         const payload = {
             appId,
-            gitRepoURL: selectedRepoType === repoType.DEFAULT ? 'Default' : gitOpsRepoURL,
+            gitRepoURL: selectedRepoType === repoType.DEFAULT && gitOpsProvider !== 'BITBUCKET_DC' ? 'Default' : gitOpsRepoURL,
         }
         setLoading(true)
         gitOpsConfigDevtron(payload)
@@ -115,6 +117,7 @@ const UserGitRepConfiguration: FunctionComponent<UserGitRepoConfigurationProps> 
                         selectedRepoType={selectedRepoType}
                         repoURL={gitOpsRepoURL}
                         setRepoURL={setGitOpsRepoURL}
+                        provider={gitOpsProvider}
                     />
                 ) : (
                     renderSavedGitOpsRepoState(gitOpsRepoURL)

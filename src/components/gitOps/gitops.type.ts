@@ -96,6 +96,7 @@ export interface UserGitRepoProps {
     repoURL: string
     selectedRepoType: string
     staleData?: boolean
+    provider?: string
 }
 
 export interface BitbucketCloudAndServerToggleSectionPropsType {

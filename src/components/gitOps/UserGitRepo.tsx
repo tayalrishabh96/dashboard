@@ -13,6 +13,7 @@ const UserGitRepo: FunctionComponent<UserGitRepoProps> = ({
     repoURL,
     selectedRepoType,
     setSelectedRepoType,
+    provider = '',
 }: UserGitRepoProps) => {
     const repoTypeChange = () => {
         const newRepoType = selectedRepoType === repoType.DEFAULT ? repoType.CONFIGURE : repoType.DEFAULT
@@ -65,6 +66,8 @@ const UserGitRepo: FunctionComponent<UserGitRepoProps> = ({
         )
     }
 
+    const _selectedRepoType = provider === 'BITBUCKET_DC' ? repoType.CONFIGURE : selectedRepoType
+
     return (
         <div className="pt-16 pl-20">
             <div className="form__row flex left">
@@ -75,11 +78,17 @@ const UserGitRepo: FunctionComponent<UserGitRepoProps> = ({
                 <RadioGroup
                     className="radio-group-no-border mt-16"
                     name="trigger-type"
-                    value={staleData ? repoType.DEFAULT : selectedRepoType}
+                    value={staleData ? repoType.DEFAULT : _selectedRepoType}
                     onChange={repoTypeChange}
                 >
                     <div>
-                        <RadioGroupItem value={repoType.DEFAULT} dataTestId="auto-create-repository">Auto-create repository</RadioGroupItem>
+                        <RadioGroupItem
+                            value={repoType.DEFAULT}
+                            dataTestId="auto-create-repository"
+                            disabled={provider === 'BITBUCKET_DC'}
+                        >
+                            Auto-create repository
+                        </RadioGroupItem>
                         <div className="ml-26 cn-7 fs-12 fw-4">
                             Repository will be created automatically using application name
                         </div>
@@ -90,7 +99,7 @@ const UserGitRepo: FunctionComponent<UserGitRepoProps> = ({
                         </RadioGroupItem>
                     </div>
                 </RadioGroup>
-                {selectedRepoType === repoType.CONFIGURE && !staleData && InputUrlBox()}
+                {_selectedRepoType === repoType.CONFIGURE && !staleData && InputUrlBox()}
                 {staleData && (
                     <div className="pt-16">
                         <div className="br-4 bw-1 er-2 pt-10 pb-10 pl-16 pr-16 bcr-1 mb-16 flex left">
