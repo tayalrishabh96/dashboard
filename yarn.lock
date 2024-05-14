@@ -982,24 +982,14 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@devtron-labs/devtron-fe-common-lib@0.0.74":
-  version "0.0.74"
-  resolved "https://registry.yarnpkg.com/@devtron-labs/devtron-fe-common-lib/-/devtron-fe-common-lib-0.0.74.tgz#fbd6275a94736a66cc1f45a07534f84893f3307a"
-  integrity sha512-AIza5ko8hfZeD4mhvXwx8rj8BLcrhXnOe3UulSnOHgoIvXgj2LeslsqJG+ZIqAf3Jr/rXUmvMqXXhnRTj9Dm3Q==
+"@devtron-labs/devtron-fe-common-lib@0.0.79-2":
+  version "0.0.79-2"
+  resolved "https://registry.yarnpkg.com/@devtron-labs/devtron-fe-common-lib/-/devtron-fe-common-lib-0.0.79-2.tgz#d29d127f0149ff05dd11e33a44c6e3f177cbb4e8"
+  integrity sha512-BWrHpaUaWgQSSBmmitTtxnAET8Syi1LgTJkuuzaTJUMTvfbWTmhlIRAd3zq8759QnJOrsBj9bIATGzNbNnHC/g==
   dependencies:
     fast-json-patch "^3.1.1"
     jsonpath-plus "^7.2.0"
     react-monaco-editor "^0.54.0"
-    sass "^1.69.7"
-    tslib "^2.4.1"
-
-"@devtron-labs/devtron-fe-lib@file:../devtron-fe-lib":
-  version "0.0.91-1"
-  resolved "file:../devtron-fe-lib"
-  dependencies:
-    fast-json-patch "^3.1.1"
-    moment-timezone "^0.5.45"
-    react-ga4 "^1.4.1"
     sass "^1.69.7"
     tslib "^2.4.1"
 

@@ -5,7 +5,7 @@ import { CaptureConsole } from '@sentry/integrations'
 import { BrowserRouter } from 'react-router-dom'
 import { BrowserTracing } from '@sentry/tracing'
 import App from './App'
-import { UserEmailProvider, customEnv } from '@devtron-labs/devtron-fe-common-lib'
+import { UserEmailProvider } from '@devtron-labs/devtron-fe-common-lib'
 
 interface customEnv {
     SENTRY_ENV?: string

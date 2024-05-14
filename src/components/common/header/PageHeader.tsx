@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Tippy from '@tippyjs/react'
 import './pageHeader.css'
 import ReactGA from 'react-ga4'
-import { getLoginInfo, getRandomColor, TippyCustomized, TippyTheme } from '@devtron-labs/devtron-fe-common-lib'
+import { getRandomColor, TippyCustomized, TippyTheme, useUserEmail } from '@devtron-labs/devtron-fe-common-lib'
 import LogoutCard from '../LogoutCard'
 import { setActionWithExpiry } from '../helpers/Helpers'
 import { InstallationType, ServerInfo } from '../../v2/devtronStackManager/DevtronStackManager.type'
@@ -45,8 +45,7 @@ const PageHeader = ({
         useContext(mainContext)
     const [showHelpCard, setShowHelpCard] = useState(false)
     const [showLogOutCard, setShowLogOutCard] = useState(false)
-    const loginInfo = getLoginInfo()
-    const email: string = loginInfo ? loginInfo['email'] || loginInfo['sub'] : ''
+    const { email } = useUserEmail()
     const [currentServerInfo, setCurrentServerInfo] = useState<{ serverInfo: ServerInfo; fetchingServerInfo: boolean }>(
         {
             serverInfo: undefined,
