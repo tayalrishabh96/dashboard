@@ -993,6 +993,16 @@
     sass "^1.69.7"
     tslib "^2.4.1"
 
+"@devtron-labs/devtron-fe-lib@file:../devtron-fe-lib":
+  version "0.0.91-1"
+  resolved "file:../devtron-fe-lib"
+  dependencies:
+    fast-json-patch "^3.1.1"
+    moment-timezone "^0.5.45"
+    react-ga4 "^1.4.1"
+    sass "^1.69.7"
+    tslib "^2.4.1"
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz#c2d872b6a7767a9d176d007f5b31f7d504bb5d6c"

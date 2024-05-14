@@ -4,7 +4,6 @@ import {
     useThrottledEffect,
     OptionType,
     DeploymentAppTypes,
-    getLoginInfo,
     APIOptions,
     useWindowSize,
     YAMLStringify,
@@ -1145,12 +1144,11 @@ export const getDeploymentAppType = (
     return allowedDeploymentTypes[0]
 }
 
-export const hasApproverAccess = (approverList: string[]): boolean => {
-    const loginInfo = getLoginInfo()
+export const hasApproverAccess = (email: string, approverList: string[]): boolean => {
     let hasAccess = false
     if (approverList?.length > 0) {
         for (const approver of approverList) {
-            if (approver === loginInfo['email'] || approver === loginInfo['sub']) {
+            if (approver === email) {
                 hasAccess = true
                 break
             }

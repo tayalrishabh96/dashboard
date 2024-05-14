@@ -5,6 +5,7 @@ import { CaptureConsole } from '@sentry/integrations'
 import { BrowserRouter } from 'react-router-dom'
 import { BrowserTracing } from '@sentry/tracing'
 import App from './App'
+import { UserEmailProvider, customEnv } from '@devtron-labs/devtron-fe-common-lib'
 
 interface customEnv {
     SENTRY_ENV?: string
@@ -184,7 +185,9 @@ ReactDOM.render(
     <React.StrictMode>
         {window.top === window.self ? (
             <BrowserRouter basename={window.__BASE_URL__}>
-                <App />
+                <UserEmailProvider>
+                    <App />
+                </UserEmailProvider>
             </BrowserRouter>
         ) : null}
     </React.StrictMode>,
